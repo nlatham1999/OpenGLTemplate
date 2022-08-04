@@ -147,9 +147,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Documents\libraries\glad\src\glad.c" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Square.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
