@@ -1,2 +1,6 @@
-﻿  Square.cpp
+﻿  glad.c
+  Main.cpp
+  Square.cpp
+  stb_image.cpp
+  Generating Code...
   OpenGLTemplate.vcxproj -> C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe
