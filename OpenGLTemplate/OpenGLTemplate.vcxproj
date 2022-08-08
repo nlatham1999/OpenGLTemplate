@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\nicho\Documents\libraries\glad\include;C:\Users\nicho\Documents\libraries\glfw-3.3.8.bin.WIN64\include;C:\Users\nicho\Documents\libraries\glew-2.1.0\include;C:\Users\nicho\Documents\libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\nicho\Documents\libraries\glm;C:\Users\nicho\Documents\libraries\glad\include;C:\Users\nicho\Documents\libraries\glfw-3.3.8.bin.WIN64\include;C:\Users\nicho\Documents\libraries\glew-2.1.0\include;C:\Users\nicho\Documents\libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\nicho\Documents\libraries\glad\include;C:\Users\nicho\Documents\libraries\glfw-3.3.8.bin.WIN64\include;C:\Users\nicho\Documents\libraries\glew-2.1.0\include;C:\Users\nicho\Documents\libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\nicho\Documents\libraries\glm;C:\Users\nicho\Documents\libraries\glad\include;C:\Users\nicho\Documents\libraries\glfw-3.3.8.bin.WIN64\include;C:\Users\nicho\Documents\libraries\glew-2.1.0\include;C:\Users\nicho\Documents\libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,6 +156,7 @@
     <None Include="shader1.vs" />
     <None Include="texture.fs" />
     <None Include="texture.vs" />
+    <None Include="transformation.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h" />

@@ -45,6 +45,9 @@
     <None Include="shader1.fs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="transformation.vs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
