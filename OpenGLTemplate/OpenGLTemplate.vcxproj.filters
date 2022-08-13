@@ -48,6 +48,9 @@
     <None Include="transformation.vs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="coordinate.vs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
