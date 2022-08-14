@@ -1,9 +1,9 @@
 ﻿  Main.cpp
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(233,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(352,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(353,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(357,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(358,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(359,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(360,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(236,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(355,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(356,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(360,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(361,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(362,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(363,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   OpenGLTemplate.vcxproj -> C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe

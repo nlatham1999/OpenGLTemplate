@@ -35,6 +35,9 @@ float lastX = 800.0f / 2.0;
 float lastY = 600.0 / 2.0;
 float fov = 45.0f;
 
+float angleRight = 0;
+float angleUp = 0;
+
 int main()
 {
     // glfw: initialize and configure
@@ -263,7 +266,7 @@ int main()
 
         //set up the view matrix
         glm::mat4 view;
-        view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        view = glm::lookAt(cameraPos, cameraFront, cameraUp);
 
 
         //set up the projection matrix
@@ -413,12 +416,41 @@ void processInput(GLFWwindow* window)
             mixValue = 0.0f;
     }
 
+    std::cout << cameraPos.x << " " << cameraPos.y << " " << cameraPos.z << std::endl;
+
+    //moving the view back and forth
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         cameraPos += cameraSpeed * cameraFront;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         cameraPos -= cameraSpeed * cameraFront;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+        cameraPos.x += cameraSpeed;
+        cameraFront.x += cameraSpeed;
+    }
+        //cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+
+    //spinning the camera around
+    const float radius = 10.0f;
+    if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) {
+        angleUp += cameraSpeed;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
+        angleUp -= cameraSpeed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
+        angleRight += cameraSpeed;
+        //cameraPos.z = cos(angleRight -= cameraSpeed) * radius;
+    }
+    if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) {
+        angleRight -= cameraSpeed;
+        //cameraPos.z = cos(angleRight += cameraSpeed) * radius;
+    }
+
+    std::cout << angleUp << " " << angleRight << std::endl;
+    cameraPos.x = 10*cos(angleUp) * cos(angleRight);
+    cameraPos.z = 10*cos(angleUp) * sin(angleRight);
+    cameraPos.y = 10*sin(angleUp);
 }
