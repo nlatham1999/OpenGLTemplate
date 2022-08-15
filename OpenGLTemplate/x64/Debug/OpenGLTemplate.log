@@ -1,7 +1,8 @@
 ﻿  glad.c
   Camera.cpp
+  Camera2.cpp
   Main.cpp
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(231,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(232,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Square.cpp
   stb_image.cpp
   Generating Code...
