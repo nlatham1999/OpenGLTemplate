@@ -23,7 +23,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera2 camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera2 camera;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -396,34 +396,20 @@ void processInput(GLFWwindow* window)
     //moving the view back and forth
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD2, deltaTime);
+        camera.MoveForward(deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD2, deltaTime);
+        camera.MoveBackward(deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT2, deltaTime);
+        camera.StrafeLeft(deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT2, deltaTime);
+        camera.StrafeRight(deltaTime);
 
-    //spinning the camera around
-    //const float radius = 10.0f;
-    //if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) {
-    //    angleUp += cameraSpeed;
-    //
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
-    //    angleUp -= cameraSpeed;
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
-    //    angleRight += cameraSpeed;
-    //    //cameraPos.z = cos(angleRight -= cameraSpeed) * radius;
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) {
-    //    angleRight -= cameraSpeed;
-    //    //cameraPos.z = cos(angleRight += cameraSpeed) * radius;
-    //}
-    //
-    //std::cout << angleUp << " " << angleRight << std::endl;
-    //cameraPos.x = 10*cos(angleUp) * cos(angleRight);
-    //cameraPos.z = 10*cos(angleUp) * sin(angleRight);
-    //cameraPos.y = 10*sin(angleUp);
+    if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+        camera.RotateUp(deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+        camera.RotateDown(deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+        camera.RotateLeft(deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
+        camera.RotateRight(deltaTime);
 }

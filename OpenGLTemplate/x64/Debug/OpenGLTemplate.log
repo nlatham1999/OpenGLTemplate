@@ -1,4 +1,5 @@
-﻿  glad.c
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppClean.targets(77,5): warning : Access to the path 'c:\users\nicho\source\repos\opengltemplate\x64\debug\opengltemplate.exe' is denied.
+  glad.c
   Camera.cpp
   Camera2.cpp
   Main.cpp
@@ -6,4 +7,4 @@ C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(232,28): warn
   Square.cpp
   stb_image.cpp
   Generating Code...
-  OpenGLTemplate.vcxproj -> C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe
+LINK : fatal error LNK1104: cannot open file 'C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe'
