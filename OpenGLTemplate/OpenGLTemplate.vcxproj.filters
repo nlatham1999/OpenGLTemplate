@@ -57,6 +57,18 @@
     <None Include="coordinate.vs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="lighting_object.vs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="lighting_object.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="lighting_light.vs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="lighting_light.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">

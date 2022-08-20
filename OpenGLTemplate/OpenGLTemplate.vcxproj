@@ -155,6 +155,10 @@
   <ItemGroup>
     <None Include="..\README.md" />
     <None Include="coordinate.vs" />
+    <None Include="lighting_light.fs" />
+    <None Include="lighting_light.vs" />
+    <None Include="lighting_object.fs" />
+    <None Include="lighting_object.vs" />
     <None Include="shader1.fs" />
     <None Include="shader1.vs" />
     <None Include="texture.fs" />
