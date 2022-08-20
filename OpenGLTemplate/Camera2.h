@@ -155,6 +155,54 @@ public:
         }
     }
 
+    void StrafeUp(float deltaTime) {
+        float velocity = MovementSpeed * deltaTime;
+
+        float distY = Position.y - Target.y;
+        float distZ = Position.z - Target.z;
+
+        float angle = atan(distY / distZ);
+
+        if (distZ >= 0) {
+            Position.y += MovementSpeed * cos(angle);
+            Position.z -= MovementSpeed * sin(angle);
+
+            Target.y += MovementSpeed * cos(angle);
+            Target.z -= MovementSpeed * sin(angle);
+        }
+        else {
+            Position.y -= MovementSpeed * cos(angle);
+            Position.z += MovementSpeed * sin(angle);
+
+            Target.y -= MovementSpeed * cos(angle);
+            Target.z += MovementSpeed * sin(angle);
+        }
+    }
+
+    void StrafeDown(float deltaTime) {
+        float velocity = MovementSpeed * deltaTime;
+
+        float distY = Position.y - Target.y;
+        float distZ = Position.z - Target.z;
+
+        float angle = atan(distY / distZ);
+
+        if (distZ >= 0) {
+            Position.y -= MovementSpeed * cos(angle);
+            Position.z += MovementSpeed * sin(angle);
+
+            Target.y -= MovementSpeed * cos(angle);
+            Target.z += MovementSpeed * sin(angle);
+        }
+        else {
+            Position.y += MovementSpeed * cos(angle);
+            Position.z -= MovementSpeed * sin(angle);
+
+            Target.y += MovementSpeed * cos(angle);
+            Target.z -= MovementSpeed * sin(angle);
+        }
+    }
+
     void StrafeLeft(float deltaTime) {
         float velocity = MovementSpeed * deltaTime;
         
@@ -208,30 +256,51 @@ public:
     void RotateUp(float deltaTime) {
 
         glm::mat4 trans = glm::mat4(1.0f);
-        //
+        
         glm::vec3 direction = glm::vec3(Position.x - Target.x, Position.y - Target.y, Position.z - Target.z);
-        //
-        //glm::vec3 cross = glm::cross(Up, direction);
-        //
-        trans = glm::rotate(trans, MovementSpeed, glm::vec3(.5, .5f, 0.0f));
-        //
+        
+        glm::vec3 cross = glm::cross(Up, direction);
+        
+        trans = glm::rotate(trans, MovementSpeed, glm::vec3(1.0f, 0.0f, 0.0f));
+        
         Position = glm::vec3(trans * glm::vec4(Position, 1.0));
-
+        
+        //std::cout << "Test 1: " << Position.x << " " << Position.y << " " << Position.z << std::endl;
+        
         //float distX = Position.x - Target.x;
         //float distY = Position.y - Target.y;
         //float distZ = Position.z - Target.z;
         //
+        //
+        //std::cout << "Test 2: " << distX << " " << distY << " " << distZ << std::endl;
+        //
         //float angleX = atan(distX / distZ);
         //float angleY = atan(distY / distZ);
         //
-        //angleX += MovementSpeed;
-        //angleY += MovementSpeed;
+        //float angleYX = atan(distY / distX);
+        //float angleYZ = atan(distY / distZ);
+        //
+        //float bigAngle = atan(angleYX / angleYZ);
+        //
+        //
+        //std::cout << "Test 3: " << glm::degrees(angleYX) << " " << glm::degrees(angleYZ) << " " << glm::degrees(bigAngle) << std::endl;
+        //
+        ////angleX += glm::radians(30.0f);
+        ////angleYX += glm::radians(0.001f);
+        //angleYZ += glm::radians(0.001);
+        //
+        //std::cout << "Test 4: " << glm::degrees(angleX) << " " << glm::degrees(angleY) << std::endl;
         //
         //float r = sqrt(distX * distX + distY * distY + distZ * distZ);
         //
-        //Position.x = 6.0 * cos(angleX) * cos(angleY);
-        //Position.y = 6.0 * sin(angleY);
-        //Position.z = 6.0 * cos(angleX) * sin(angleY);
+        //float x = 6 * sin(angleYX);
+        //float z = 6 * sin(angleYZ);
+        //float y = 6 * cos(angleYX) * cos(angleYZ);
+        //
+        //float newDist = sqrt(x * x + y * y + z * z);
+        //
+        //std::cout << "Test 5: " << r << " " << x << " " << y << " " << z << " " << newDist << std::endl;
+
 
         //Position.y = cos(MovementSpeed) * Position.y - sin(MovementSpeed) * Position.z;
         //Position.z = sin(MovementSpeed) * Position.y + cos(MovementSpeed) * Position.z;
@@ -245,7 +314,7 @@ public:
 
         //updateCameraVectors();
 
-        std::cout << Position.x << " " << Position.y << " " << Position.z << std::endl;
+        //std::cout << Position.x << " " << Position.y << " " << Position.z << std::endl;
     }
 
     void RotateDown(float deltaTime) {
