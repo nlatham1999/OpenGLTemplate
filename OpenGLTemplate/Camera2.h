@@ -96,60 +96,168 @@ public:
     }
 
     void MoveForward(float deltaTime) {
-        //float velocity = MovementSpeed * deltaTime;
-        Position.z -= MovementSpeed;
-        //TargetZ += MovementSpeed;
+
+        float distX = Position.x - Target.x;
+        float distZ = Position.z - Target.z;
+        float distY = Position.y - Target.y;
+
+        float anglex = atan(distX / distZ);
+        float angley = atan(distY / distZ);
+
+        if (distZ >= 0) {
+            Position.x -= MovementSpeed * sin(anglex);
+            Position.y -= MovementSpeed * sin(angley);
+            Position.z -= MovementSpeed * cos(anglex) * cos(angley);
+
+            Target.x -= MovementSpeed * sin(anglex);
+            Target.y -= MovementSpeed * sin(angley);
+            Target.z -= MovementSpeed * cos(anglex) * cos(angley);
+        }
+        else {
+            Position.x += MovementSpeed * sin(anglex);
+            Position.y += MovementSpeed * sin(angley);
+            Position.z += MovementSpeed * cos(anglex) * cos(angley);
+
+            Target.x += MovementSpeed * sin(anglex);
+            Target.y += MovementSpeed * sin(angley);
+            Target.z += MovementSpeed * cos(anglex) * cos(angley);
+        }
+
+        //std::cout << glm::degrees(angle) << std::endl;
     }
 
     void MoveBackward(float deltaTime) {
-        float velocity = MovementSpeed * deltaTime;
-        //Position.x += velocity;
-        Position.z += MovementSpeed;
+
+        float distX = Position.x - Target.x;
+        float distZ = Position.z - Target.z;
+        float distY = Position.y - Target.y;
+
+        float anglex = atan(distX / distZ);
+        float angley = atan(distY / distZ);
+
+        if (distZ >= 0) {
+            Position.x += MovementSpeed * sin(anglex);
+            Position.y += MovementSpeed * sin(angley);
+            Position.z += MovementSpeed * cos(anglex) * cos(angley);
+
+            Target.x += MovementSpeed * sin(anglex);
+            Target.y += MovementSpeed * sin(angley);
+            Target.z += MovementSpeed * cos(anglex) * cos(angley);
+        }
+        else {
+            Position.x -= MovementSpeed * sin(anglex);
+            Position.y -= MovementSpeed * sin(angley);
+            Position.z -= MovementSpeed * cos(anglex) * cos(angley);
+
+            Target.x -= MovementSpeed * sin(anglex);
+            Target.y -= MovementSpeed * sin(angley);
+            Target.z -= MovementSpeed * cos(anglex) * cos(angley);
+        }
     }
 
     void StrafeLeft(float deltaTime) {
         float velocity = MovementSpeed * deltaTime;
-        //Position -= Right * velocity;
+        
+        float distX = Position.x - Target.x;
+        float distZ = Position.z - Target.z;
 
-        //Position.x -= MovementSpeed;
-        //Target.x -= MovementSpeed;
+        float angle = atan(distX / distZ);
 
-        Position.x -= cos(Position.x) * MovementSpeed;
-        Target.x -= cos(Target.x) * MovementSpeed;
+        if (distZ >= 0) {
+            Position.x += MovementSpeed * cos(angle);
+            Position.z -= MovementSpeed * sin(angle);
 
-        Position.z += sin(Position.x) * MovementSpeed;
-        Target.z += sin(Target.x) * MovementSpeed;
+            Target.x += MovementSpeed * cos(angle);
+            Target.z -= MovementSpeed * sin(angle);
+        }
+        else {
+            Position.x -= MovementSpeed * cos(angle);
+            Position.z += MovementSpeed * sin(angle);
+
+            Target.x -= MovementSpeed * cos(angle);
+            Target.z += MovementSpeed * sin(angle);
+        }
     }
 
     void StrafeRight(float deltaTime) {
         float velocity = MovementSpeed * deltaTime;
        //Position += Right * velocity;
 
-        Position.x += MovementSpeed;
-        Target.x += MovementSpeed;
+        float distX = Position.x - Target.x;
+        float distZ = Position.z - Target.z;
+
+        float angle = atan(distX / distZ);
+        if (distZ >= 0) {
+            Position.x -= MovementSpeed * cos(angle);
+            Position.z += MovementSpeed * sin(angle);
+
+            Target.x -= MovementSpeed * cos(angle);
+            Target.z += MovementSpeed * sin(angle);
+        }
+        else {
+            Position.x += MovementSpeed * cos(angle);
+            Position.z -= MovementSpeed * sin(angle);
+
+            Target.x += MovementSpeed * cos(angle);
+            Target.z -= MovementSpeed * sin(angle);
+        }
+
+        //std::cout << distX << " " << distZ << " " << glm::degrees(angle) << " " << Position.x << " " << Position.z << " " << Target.x << " " << Target.z << std::endl;
     }
 
     void RotateUp(float deltaTime) {
 
-        Position.y = cos(MovementSpeed) * Position.y - sin(MovementSpeed) * Position.z;
-        Position.z = sin(MovementSpeed) * Position.y + cos(MovementSpeed) * Position.z;
-        
-        std::cout << Position.y << " " << Position.z << std::endl;
+        glm::mat4 trans = glm::mat4(1.0f);
+        //
+        glm::vec3 direction = glm::vec3(Position.x - Target.x, Position.y - Target.y, Position.z - Target.z);
+        //
+        //glm::vec3 cross = glm::cross(Up, direction);
+        //
+        trans = glm::rotate(trans, MovementSpeed, glm::vec3(.5, .5f, 0.0f));
+        //
+        Position = glm::vec3(trans * glm::vec4(Position, 1.0));
 
-        if (Position.y < -5.96 || Position.y > 5.96) {
-            if (switchDirection) {
-                Up.y *= -1;
-                switchDirection = false;
-            }
+        //float distX = Position.x - Target.x;
+        //float distY = Position.y - Target.y;
+        //float distZ = Position.z - Target.z;
+        //
+        //float angleX = atan(distX / distZ);
+        //float angleY = atan(distY / distZ);
+        //
+        //angleX += MovementSpeed;
+        //angleY += MovementSpeed;
+        //
+        //float r = sqrt(distX * distX + distY * distY + distZ * distZ);
+        //
+        //Position.x = 6.0 * cos(angleX) * cos(angleY);
+        //Position.y = 6.0 * sin(angleY);
+        //Position.z = 6.0 * cos(angleX) * sin(angleY);
+
+        //Position.y = cos(MovementSpeed) * Position.y - sin(MovementSpeed) * Position.z;
+        //Position.z = sin(MovementSpeed) * Position.y + cos(MovementSpeed) * Position.z;
+        //
+        if (Position.z < 0) {
+            Up.y = -1;
         }
         else {
-            switchDirection = true;
+            Up.y = 1;
         }
+
+        //updateCameraVectors();
+
+        std::cout << Position.x << " " << Position.y << " " << Position.z << std::endl;
     }
 
     void RotateDown(float deltaTime) {
         Position.y = cos(-MovementSpeed) * Position.y - sin(-MovementSpeed) * Position.z;
         Position.z = sin(-MovementSpeed) * Position.y + cos(-MovementSpeed) * Position.z;
+
+        if (Position.z < 0) {
+            Up.y = -1;
+        }
+        else {
+            Up.y = 1;
+        }
     }
 
     void RotateLeft(float deltaTime) {
@@ -198,11 +306,23 @@ private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()
     {
-        // calculate the new Front vector
+        
         glm::vec3 front;
-        front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-        front.y = sin(glm::radians(Pitch));
-        front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        front.x = Position.x - Target.x;
+        front.y = Position.y - Target.y;
+        front.z = Position.z - Target.z;
+
+        front = glm::normalize(front);
+
+        glm::vec3 worldUp = glm::vec3(0.0f, 0.1f, 0.0f);
+        glm::vec3 right = glm::normalize(glm::cross(front, worldUp));
+        Up = glm::normalize(glm::cross(right, front));
+
+        // calculate the new Front vector
+        //glm::vec3 front;
+        //front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        //front.y = sin(glm::radians(Pitch));
+        //front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         //Front = glm::normalize(front);
         // also re-calculate the Right and Up vector
         //Right = glm::normalize(glm::cross(Front, WorldUp));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
