@@ -191,6 +191,7 @@ int main()
         //lightingShader.setVec3("lightColor", lampLight);
         lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f); 
         lightingShader.setVec3("lightPos", lightPos);
+        lightingShader.setVec3("viewPos", camera.Position);
 
 
         // view/projection transformations
