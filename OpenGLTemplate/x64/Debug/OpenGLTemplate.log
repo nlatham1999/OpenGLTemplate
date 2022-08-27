@@ -1,4 +1,2 @@
 ﻿  Main.cpp
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(171,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Main.cpp(182,37): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   OpenGLTemplate.vcxproj -> C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe

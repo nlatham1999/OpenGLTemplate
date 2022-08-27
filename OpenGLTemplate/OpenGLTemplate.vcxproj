@@ -159,6 +159,8 @@
     <None Include="lighting_light.vs" />
     <None Include="lighting_object.fs" />
     <None Include="lighting_object.vs" />
+    <None Include="material.fs" />
+    <None Include="material.vs" />
     <None Include="shader1.fs" />
     <None Include="shader1.vs" />
     <None Include="texture.fs" />
