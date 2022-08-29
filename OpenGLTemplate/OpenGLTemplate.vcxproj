@@ -161,6 +161,8 @@
     <None Include="lighting_object.vs" />
     <None Include="material.fs" />
     <None Include="material.vs" />
+    <None Include="material2.fs" />
+    <None Include="material2.vs" />
     <None Include="shader1.fs" />
     <None Include="shader1.vs" />
     <None Include="texture.fs" />
@@ -173,6 +175,9 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="container2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
