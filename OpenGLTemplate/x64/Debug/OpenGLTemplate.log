@@ -5,4 +5,4 @@
   Square.cpp
   stb_image.cpp
   Generating Code...
-C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\Square.cpp : fatal error C1090: PDB API call failed, error code '3': C:\Users\nicho\source\repos\OpenGLTemplate\OpenGLTemplate\x64\Debug\vc142.pdb
+  OpenGLTemplate.vcxproj -> C:\Users\nicho\source\repos\OpenGLTemplate\x64\Debug\OpenGLTemplate.exe
