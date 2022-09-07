@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="attenuation.fs" />
     <None Include="coordinate.vs" />
     <None Include="lighting_light.fs" />
     <None Include="lighting_light.vs" />
