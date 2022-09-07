@@ -167,6 +167,7 @@
     <None Include="material2.vs" />
     <None Include="shader1.fs" />
     <None Include="shader1.vs" />
+    <None Include="spotlight.fs" />
     <None Include="texture.fs" />
     <None Include="texture.vs" />
     <None Include="transformation.vs" />

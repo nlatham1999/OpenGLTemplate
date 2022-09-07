@@ -32,6 +32,7 @@ public:
     glm::vec3 Position;
     glm::vec3 Target;
     glm::vec3 Up;
+    glm::vec3 Front;
 
     // euler Angles
     float Yaw;
@@ -48,7 +49,8 @@ public:
         : Target(glm::vec3(0.0f, 0.0f, 0.0f)), 
         MovementSpeed(SPEED2), 
         MouseSensitivity(SENSITIVITY2), 
-        Zoom(ZOOM2)
+        Zoom(ZOOM2),
+        Front(glm::vec3(0.0f, 0.0f, -1.0f))
     {
 
         Position = position;
@@ -62,7 +64,8 @@ public:
         : Target(glm::vec3(0.0f, 0.0f, -1.0f)), 
         MovementSpeed(SPEED2), 
         MouseSensitivity(SENSITIVITY2), 
-        Zoom(ZOOM2)
+        Zoom(ZOOM2),
+        Front(glm::vec3(0.0f, 0.0f, -1.0f))
     {
         Position = glm::vec3(posX, posY, posZ);
         Up = glm::vec3(upX, upY, upZ);
@@ -74,6 +77,7 @@ public:
     // returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
+        Front = Target - Position;
         return glm::lookAt(
             Position,
             Target,

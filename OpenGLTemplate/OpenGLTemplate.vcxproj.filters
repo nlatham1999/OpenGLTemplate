@@ -87,6 +87,9 @@
     <None Include="attenuation.fs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="spotlight.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
