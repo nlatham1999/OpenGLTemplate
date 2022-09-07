@@ -81,6 +81,9 @@
     <None Include="material2.fs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="light_casters.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
