@@ -36,6 +36,12 @@
     <ClCompile Include="Camera2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
@@ -90,6 +96,17 @@
     <None Include="spotlight.fs">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="multiple_lights.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="linking\include\.editorconfig" />
+    <None Include="linking\include\config.h.in" />
+    <None Include="model_loading.vs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="model_loading.fs">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
@@ -105,6 +122,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
