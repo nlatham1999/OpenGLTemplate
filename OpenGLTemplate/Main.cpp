@@ -22,6 +22,10 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 unsigned int loadTexture(const char* path);
 
+
+void drawModel(Shader& shader, Model& model);
+void drawViewAndProjection(Shader& shader);
+
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -98,11 +102,16 @@ int main()
     // -------------------------
     Shader ourShader("model_loading.vs", "model_loading.fs");
 
-    std::filesystem::path path("resources/models/backpack/backpack.obj");
+    //std::filesystem::path path("resources/models/backpack/backpack.obj");
 
     // load models
     // -----------
-    Model ourModel(path.generic_string());
+    //Model ourModel(path.generic_string());
+
+    //load vertex arrays and buffer
+    unsigned int VBO, cubeVAO;
+    Square square;
+    square.setUpVaoAndVbo(cubeVAO, VBO, true, true, true);
 
 
     while (!glfwWindowShouldClose(window))
@@ -126,18 +135,13 @@ int main()
         ourShader.use();
 
         // view/projection transformations
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        glm::mat4 view = camera.GetViewMatrix();
-        ourShader.setMat4("projection", projection);
-        ourShader.setMat4("view", view);
+        drawViewAndProjection(ourShader);
+
+        glm::vec3 cubePosition = glm::vec3(0.0f, 0.0f, 0.0f);
+        square.drawShape(cubePosition, 1, ourShader);
 
         // render the loaded model
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-        ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
-
+        //drawModel(ourShader, ourModel);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -145,10 +149,30 @@ int main()
         glfwPollEvents();
     }
 
+    glDeleteVertexArrays(1, &cubeVAO);
+    glDeleteBuffers(1, &VBO);
+
+
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     glfwTerminate();
     return 0;
+}
+
+void drawViewAndProjection(Shader& shader) {
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 view = camera.GetViewMatrix();
+    shader.setMat4("projection", projection);
+    shader.setMat4("view", view);
+}
+
+//renders a model 
+void drawModel(Shader& shader, Model& model) {
+    glm::mat4 model4 = glm::mat4(1.0f);
+    model4 = glm::translate(model4, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+    model4 = glm::scale(model4, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    shader.setMat4("model", model4);
+    model.Draw(shader);
 }
 
 void checkShaderCompilation(GLuint* shader) {
