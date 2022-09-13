@@ -15,6 +15,8 @@
 #include <filesystem>
 #include <iostream>
 
+
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 void checkShaderCompilation(GLuint* shader);
@@ -111,7 +113,8 @@ int main()
     //load vertex arrays and buffer
     unsigned int VBO, cubeVAO;
     Square square;
-    square.setUpVaoAndVbo(cubeVAO, VBO, true, true, true);
+    square.setupVBO(VBO);
+    square.setupVAO(cubeVAO, VBO, true, true);
 
 
     while (!glfwWindowShouldClose(window))

@@ -64,6 +64,7 @@ public:
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
     };
 
+
     Square() {
 
     }
@@ -76,16 +77,15 @@ public:
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
 
-    void setUpVaoAndVbo(unsigned int& VAO, unsigned int& VBO, bool setupVBO, bool setupNormals, bool setupTexture) {
+    void setupVBO(unsigned int& VBO) {
+        glGenBuffers(1, &VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    }
+
+    void setupVAO(unsigned int& VAO, unsigned int& VBO, bool setupNormals, bool setupTexture) {
         glGenVertexArrays(1, &VAO);
         
-        if(setupVBO)
-            glGenBuffers(1, &VBO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-        if(setupVBO)
-            glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
         glBindVertexArray(VAO);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
@@ -102,7 +102,5 @@ public:
         }
     }
 };
-
-
 
 #endif
